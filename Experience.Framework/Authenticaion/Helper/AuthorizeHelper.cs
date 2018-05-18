@@ -11,9 +11,8 @@ namespace Experience.Framework
 {
     public class AuthorizeHelper
     {
-        const string RandomKey = "znnJrrrZ5HL7mot9uwqB4oteeAyo7l03RWOWpeXa2QQ=";
-        static CookieAuthorizeHelper CookieAuthorize = new CookieAuthorizeHelper(RandomKey);
-        static HeaderAuthorizeHelper HeaderAuthorize = new HeaderAuthorizeHelper(RandomKey);
+        static CookieAuthorizeHelper CookieAuthorize = new CookieAuthorizeHelper();
+        static HeaderAuthorizeHelper HeaderAuthorize = new HeaderAuthorizeHelper();
         public static bool CanAccess<T>(T identity) where T : IIdentity
         {
             if (identity != null && identity.IsAuthenticated)

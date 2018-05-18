@@ -11,11 +11,9 @@ namespace Experience.Framework
 {
     internal abstract class AuthorizeBase
     {
-        private string RandomKey { get; set; }
         private ITokenCrypto TokenCrypto { get { return ServiceConfiguration.Configuration.TokenCrypto; } }
-        protected AuthorizeBase(string randomKey)
+        protected AuthorizeBase()
         {
-            RandomKey = randomKey;
         }
         protected string CreateToken<T>(T identity) where T : IIdentity
         {
@@ -27,11 +25,11 @@ namespace Experience.Framework
                 Token = Encoding.UTF8.GetBytes(Encrypt(identityValue, randomKey))
             };
             string tokenValue = ConvertJson(token);
-            return Base64Encrypt(tokenValue, RandomKey);
+            return Base64Encrypt(tokenValue, TokenCrypto.DefaultKey);
         }
         protected T GetToken<T>(string token) where T : IIdentity
         {
-            string urlDecodeToken = Base64Decrypt(token, RandomKey);
+            string urlDecodeToken = Base64Decrypt(token, TokenCrypto.DefaultKey);
             var tokenObject = JsonConvert.DeserializeObject<EncryptedToken>(urlDecodeToken);
             string randomKey = Encoding.UTF8.GetString(tokenObject.RandomKey);
             string tookenValue = Encoding.UTF8.GetString(tokenObject.Token);

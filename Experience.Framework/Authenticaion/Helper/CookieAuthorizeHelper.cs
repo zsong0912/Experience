@@ -18,8 +18,7 @@ namespace Experience.Framework
         /// <param name="cookieSetting"></param>
         /// <param name="randomKey"></param>
         ICookieSetting CookieSetting { get { return ServiceConfiguration.Configuration.CookieSetting; } }
-        public CookieAuthorizeHelper(string randomKey)
-            : base(randomKey)
+        public CookieAuthorizeHelper()
         {
         }
         public T GetIdentity<T>(HttpContext context) where T : IIdentity

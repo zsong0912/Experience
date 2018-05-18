@@ -12,8 +12,7 @@ namespace Experience.Framework
 {
     internal class HeaderAuthorizeHelper : AuthorizeBase
     {
-        public HeaderAuthorizeHelper(string randomKey)
-            : base(randomKey)
+        public HeaderAuthorizeHelper()
         {
         }
         const string HeaderKey = "Authorization";
