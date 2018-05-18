@@ -1,0 +1,6 @@
+
+*.suo
+Experience.AccessDatabase/bin/**/*.*
+Experience.AccessDatabase/obj/**/*.*
+Experience.Framework/bin/**/*.*
+Experience.Framework/obj/**/*.*
